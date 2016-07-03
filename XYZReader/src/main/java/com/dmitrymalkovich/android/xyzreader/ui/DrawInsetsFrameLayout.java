@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.xyzreader.ui;
+package com.dmitrymalkovich.android.xyzreader.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -26,7 +26,7 @@ import android.util.AttributeSet;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
-import com.example.xyzreader.R;
+import com.dmitrymalkovich.android.xyzreader.R;
 
 
 public class DrawInsetsFrameLayout extends FrameLayout {

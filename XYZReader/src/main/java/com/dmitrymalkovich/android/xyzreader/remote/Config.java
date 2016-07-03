@@ -1,4 +1,4 @@
-package com.example.xyzreader.remote;
+package com.dmitrymalkovich.android.xyzreader.remote;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,7 +9,7 @@ public class Config {
     static {
         URL url = null;
         try {
-            url = new URL("https://dl.dropboxusercontent.com/u/231329/xyzreader_data/data.json" );
+            url = new URL("https://dl.dropboxusercontent.com/u/231329/xyzreader_data/data.json");
         } catch (MalformedURLException ignored) {
             // TODO: throw a real error
         }

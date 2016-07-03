@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.xyzreader.ui;
+package com.dmitrymalkovich.android.xyzreader.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;

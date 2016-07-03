@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.xyzreader"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dmitrymalkovich.android.xyzreader"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -26,21 +27,23 @@
         <activity
             android:name=".ui.ArticleDetailActivity"
             android:parentActivityName=".ui.ArticleListActivity">
-            <intent-filter>
+            <intent-filter tools:ignore="GoogleAppIndexingWarning">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.example.xyzreader.items" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.dmitrymalkovich.android.xyzreader.items" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.ArticleListActivity" />
         </activity>
 
-        <service android:name=".data.UpdaterService"
+        <service
+            android:name=".data.UpdaterService"
             android:exported="false" />
 
-        <provider android:name=".data.ItemsProvider"
-            android:authorities="com.example.xyzreader"
+        <provider
+            android:name=".data.ItemsProvider"
+            android:authorities="com.dmitrymalkovich.android.xyzreader"
             android:exported="false" />
 
     </application>

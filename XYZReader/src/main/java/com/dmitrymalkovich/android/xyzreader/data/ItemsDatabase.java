@@ -1,10 +1,10 @@
-package com.example.xyzreader.data;
+package com.dmitrymalkovich.android.xyzreader.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static com.example.xyzreader.data.ItemsProvider.Tables;
+import static com.dmitrymalkovich.android.xyzreader.data.ItemsProvider.Tables;
 
 public class ItemsDatabase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "xyzreader.db";
@@ -26,7 +26,7 @@ public class ItemsDatabase extends SQLiteOpenHelper {
                 + ItemsContract.ItemsColumns.PHOTO_URL + " TEXT NOT NULL,"
                 + ItemsContract.ItemsColumns.ASPECT_RATIO + " REAL NOT NULL DEFAULT 1.5,"
                 + ItemsContract.ItemsColumns.PUBLISHED_DATE + " INTEGER NOT NULL DEFAULT 0"
-                + ")" );
+                + ")");
     }
 
     @Override
