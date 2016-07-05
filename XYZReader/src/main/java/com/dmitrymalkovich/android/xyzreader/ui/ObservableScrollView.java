@@ -17,9 +17,7 @@
 package com.dmitrymalkovich.android.xyzreader.ui;
 
 import android.content.Context;
-import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ScrollView;
 
 /**
@@ -44,7 +42,7 @@ public class ObservableScrollView extends ScrollView {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         int scrollY = getScrollY();
-        // hack to call onScrollChanged on screen rotate
+        // Hack to call onScrollChanged on screen rotate
         if (scrollY > 0 && mCallbacks != null) {
             mCallbacks.onScrollChanged();
         }
@@ -59,7 +57,7 @@ public class ObservableScrollView extends ScrollView {
         mCallbacks = listener;
     }
 
-    public static interface Callbacks {
-        public void onScrollChanged();
+    public interface Callbacks {
+        void onScrollChanged();
     }
 }
