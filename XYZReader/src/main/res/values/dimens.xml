@@ -1,12 +1,9 @@
 <resources>
-    <dimen name="detail_title_text_size">32sp</dimen>
-    <dimen name="detail_body_text_size">22sp</dimen>
-    <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
-
     <!-- Cards -->
     <dimen name="material_component_cards_left_and_right_padding">16dp</dimen>
     <dimen name="material_component_cards_top_and_bottom_padding">16dp</dimen>
     <dimen name="material_component_cards_padding_from_edge_of_screen_to_card">8dp</dimen>
     <dimen name="material_component_cards_space_between_cards">8dp</dimen>
-
+    <!--  -->
+    <integer name="list_column_count">2</integer>
 </resources>

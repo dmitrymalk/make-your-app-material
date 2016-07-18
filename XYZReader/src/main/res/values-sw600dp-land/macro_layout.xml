@@ -1,6 +1,0 @@
-<resources>
-    <bool name="detail_is_card">true</bool>
-
-    <dimen name="detail_photo_height">600dp</dimen>
-    <dimen name="detail_card_top_margin">256dp</dimen>
-</resources>

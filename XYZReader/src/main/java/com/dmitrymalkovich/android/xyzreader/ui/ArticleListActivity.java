@@ -1,14 +1,14 @@
 package com.dmitrymalkovich.android.xyzreader.ui;
 
-import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -29,12 +29,14 @@ import butterknife.ButterKnife;
  * touched, lead to a {@link ArticleDetailActivity} representing item details. On tablets, the
  * activity presents a grid of items as cards.
  */
-public class ArticleListActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,
+public class ArticleListActivity extends AppCompatActivity
+        implements SwipeRefreshLayout.OnRefreshListener,
         LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
     @BindView(R.id.toolbar) Toolbar mToolbar;
+    private ArticleListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +55,34 @@ public class ArticleListActivity extends AppCompatActivity implements SwipeRefre
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                        RecyclerView.State state) {
                 int position = parent.getChildAdapterPosition(view);
-                int space = (int) getResources().getDimension(R.dimen.material_component_cards_space_between_cards);
+                int space = (int) getResources()
+                        .getDimension(R.dimen.material_component_cards_space_between_cards);
+
+                if (position == 0 || position == 1)
+                {
+                    outRect.top = space;
+                }
+                else
+                {
+                    outRect.top = 0;
+                }
+
                 if (position % 2 == 0) {
                     outRect.right = space;
                 }
-                outRect.top = space;
                 outRect.bottom = space;
             }
         });
+        int columnCount = getResources().getInteger(R.integer.list_column_count);
+        StaggeredGridLayoutManager staggeredGridLayoutManager =
+                new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
 
-        getLoaderManager().initLoader(0, null, this);
+        mAdapter = new ArticleListAdapter(null);
+        mAdapter.setHasStableIds(true);
+        mRecyclerView.setAdapter(mAdapter);
+
+        getSupportLoaderManager().initLoader(0, null, this);
 
         if (savedInstanceState == null) {
             startService(new Intent(this, UpdaterService.class));
@@ -99,18 +119,12 @@ public class ArticleListActivity extends AppCompatActivity implements SwipeRefre
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        ArticleListAdapter adapter = new ArticleListAdapter(cursor);
-        adapter.setHasStableIds(true);
-        mRecyclerView.setAdapter(adapter);
-        int columnCount = getResources().getInteger(R.integer.list_column_count);
-        StaggeredGridLayoutManager staggeredGridLayoutManager =
-                new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+        mAdapter.swapCursor(cursor);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        mRecyclerView.setAdapter(null);
+        mAdapter.swapCursor(null);
     }
 
     @Override

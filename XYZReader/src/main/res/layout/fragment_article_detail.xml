@@ -1,98 +1,106 @@
-<com.dmitrymalkovich.android.xyzreader.ui.DrawInsetsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/draw_insets_frame_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:ignore="MergeRootFrame">
 
-    <com.dmitrymalkovich.android.xyzreader.ui.ObservableScrollView
-        android:id="@+id/scrollview"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/material_layout_app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <FrameLayout
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
             <FrameLayout
-                android:id="@+id/photo_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    android:layout_height="240dp"
                     tools:ignore="ContentDescription" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/photo_background_protection" />
 
             </FrameLayout>
 
-            <com.dmitrymalkovich.android.xyzreader.ui.MaxWidthLinearLayout
+            <!--<LinearLayout-->
+                <!--android:id="@+id/meta_bar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/title"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:orientation="vertical"-->
+                <!--android:padding="@dimen/material_layout_keylines_screen_edge_margin">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/article_title"-->
+                    <!--style="?android:attr/textAppearanceLarge"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/article_author"-->
+                    <!--style="?android:attr/textAppearanceSmall"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+
+            <!--</LinearLayout>-->
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="240dp"
-                android:maxWidth="@dimen/detail_card_max_width"
-                android:orientation="vertical">
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-                <LinearLayout
-                    android:id="@+id/meta_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-                    android:background="#333"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/detail_metabar_vert_padding"
-                    android:paddingLeft="@dimen/detail_inner_horiz_margin"
-                    android:paddingRight="@dimen/detail_inner_horiz_margin"
-                    android:paddingTop="@dimen/detail_metabar_vert_padding">
+            </android.support.v7.widget.Toolbar>
 
-                    <TextView
-                        android:id="@+id/article_title"
-                        style="?android:attr/textAppearanceLarge"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:lineSpacingMultiplier="0.9"
-                        android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
-                        android:textSize="@dimen/detail_title_text_size"
-                        android:textStyle="bold" />
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-                    <TextView
-                        android:id="@+id/article_byline"
-                        style="?android:attr/textAppearanceSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#8fff" />
-                </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/article_body"
-                    style="?android:attr/textAppearanceMedium"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
-                    android:layout_marginRight="@dimen/detail_inner_horiz_margin"
-                    android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-                    android:paddingBottom="@dimen/detail_body_bottom_margin"
-                    android:textSize="@dimen/detail_body_text_size" />
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/movie_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            </com.dmitrymalkovich.android.xyzreader.ui.MaxWidthLinearLayout>
-        </FrameLayout>
-    </com.dmitrymalkovich.android.xyzreader.ui.ObservableScrollView>
+        <TextView
+            android:id="@+id/article_body"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_layout_keylines_screen_edge_margin" />
+
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/share_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_component_floating_action_button_margin"
+        android:clickable="true"
         android:contentDescription="@string/action_share"
-        android:layout_gravity="bottom|end"
         android:src="@drawable/ic_share_black_24dp"
-        android:layout_margin="@dimen/material_component_floating_action_button_margin"/>
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
 
-</com.dmitrymalkovich.android.xyzreader.ui.DrawInsetsFrameLayout>
+</android.support.design.widget.CoordinatorLayout>

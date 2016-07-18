@@ -1,0 +1,24 @@
+<resources>
+    <!--<dimen name="detail_title_text_size">32sp</dimen>-->
+    <!--<dimen name="detail_body_text_size">22sp</dimen>-->
+    <!--<item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>-->
+
+    <!-- w320, 3:2 -->
+    <dimen name="material_layout_app_bar_height">214dp</dimen>
+
+    <dimen name="title">80dp</dimen>
+
+    <!---->
+    <!--<dimen name="list_side_margin">4dp</dimen>-->
+    <!--<dimen name="list_toolbar_side_margin">0dp</dimen>-->
+
+    <!--<bool name="detail_is_card">false</bool>-->
+    <!--<dimen name="detail_photo_height">304dp</dimen>-->
+    <!--<dimen name="detail_card_top_margin">@dimen/detail_photo_height</dimen>-->
+    <!--<dimen name="detail_inner_horiz_margin">16dp</dimen>-->
+    <!--<dimen name="detail_card_max_width">10000dp</dimen> &lt;!&ndash; force match_parent &ndash;&gt;-->
+    <!--<dimen name="detail_metabar_vert_padding">16dp</dimen>-->
+    <!--<dimen name="detail_metabar_title_bottom_padding">4dp</dimen>-->
+    <!--<dimen name="detail_body_top_margin">16dp</dimen>-->
+    <!--<dimen name="detail_body_bottom_margin">88dp</dimen>-->
+</resources>

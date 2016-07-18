@@ -25,7 +25,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.ArticleDetailActivity">
+        <activity
+            android:name=".ui.ArticleDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter tools:ignore="GoogleAppIndexingWarning">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

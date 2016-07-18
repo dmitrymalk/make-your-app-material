@@ -13,18 +13,10 @@ import com.dmitrymalkovich.android.xyzreader.R;
 import com.dmitrymalkovich.android.xyzreader.data.ArticleLoader;
 import com.dmitrymalkovich.android.xyzreader.data.ItemsContract;
 
-
-public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.ViewHolder> {
-    private Cursor mCursor;
+public class ArticleListAdapter extends CursorRecyclerViewAdapter<ArticleListAdapter.ViewHolder> {
 
     public ArticleListAdapter(Cursor cursor) {
-        mCursor = cursor;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        mCursor.moveToPosition(position);
-        return mCursor.getLong(ArticleLoader.Query._ID);
+        super(cursor);
     }
 
     @Override
@@ -43,24 +35,23 @@ public class ArticleListAdapter extends RecyclerView.Adapter<ArticleListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        mCursor.moveToPosition(position);
-        holder.titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+    public void onBindViewHolder(ViewHolder holder, final Cursor cursor) {
+        holder.titleView.setText(cursor.getString(ArticleLoader.Query.TITLE));
         holder.subtitleView.setText(
                 DateUtils.getRelativeTimeSpanString(
-                        mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
+                        cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_ALL).toString());
-        holder.authorView.setText(mCursor.getString(ArticleLoader.Query.AUTHOR));
+        holder.authorView.setText(cursor.getString(ArticleLoader.Query.AUTHOR));
         holder.thumbnailView.setImageUrl(
-                mCursor.getString(ArticleLoader.Query.THUMB_URL),
+                cursor.getString(ArticleLoader.Query.THUMB_URL),
                 ImageLoaderHelper.getInstance(holder.thumbnailView.getContext()).getImageLoader());
-        holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+        holder.thumbnailView.setAspectRatio(cursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
     }
 
     @Override
     public int getItemCount() {
-        return mCursor.getCount();
+        return super.getItemCount();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
