@@ -1,4 +1,3 @@
-
 package com.dmitrymalkovich.android.xyzreader.data;
 
 import android.content.ContentProvider;
