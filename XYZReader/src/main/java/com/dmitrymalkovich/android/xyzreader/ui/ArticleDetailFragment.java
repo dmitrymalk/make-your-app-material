@@ -2,7 +2,6 @@ package com.dmitrymalkovich.android.xyzreader.ui;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,8 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
+import com.bumptech.glide.Glide;
 import com.dmitrymalkovich.android.xyzreader.R;
 import com.dmitrymalkovich.android.xyzreader.data.ArticleLoader;
 
@@ -111,6 +109,7 @@ public class ArticleDetailFragment extends Fragment implements
                         + cursor.getString(ArticleLoader.Query.AUTHOR)
                         + "</font>").toString();
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
+        String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
         mToolbar.setTitle(title);
         mToolbar.setSubtitle(author);
@@ -124,21 +123,7 @@ public class ArticleDetailFragment extends Fragment implements
 
         mBodyView.setText(body);
 
-        ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
-                .get(cursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
-                    @Override
-                    public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-                        Bitmap bitmap = imageContainer.getBitmap();
-                        if (bitmap != null && mPhotoView != null) {
-                            mPhotoView.setImageBitmap(imageContainer.getBitmap());
-                        }
-                    }
-
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-
-                    }
-                });
+        Glide.with(this).load(photo).into(mPhotoView);
 
         mShareFab.setOnClickListener(new View.OnClickListener() {
             @Override

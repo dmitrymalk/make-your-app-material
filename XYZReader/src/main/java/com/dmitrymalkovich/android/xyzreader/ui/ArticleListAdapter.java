@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.dmitrymalkovich.android.xyzreader.R;
 import com.dmitrymalkovich.android.xyzreader.data.ArticleLoader;
 import com.dmitrymalkovich.android.xyzreader.data.ItemsContract;
@@ -43,10 +44,10 @@ public class ArticleListAdapter extends CursorRecyclerViewAdapter<ArticleListAda
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_ALL).toString());
         holder.authorView.setText(cursor.getString(ArticleLoader.Query.AUTHOR));
-        holder.thumbnailView.setImageUrl(
-                cursor.getString(ArticleLoader.Query.THUMB_URL),
-                ImageLoaderHelper.getInstance(holder.thumbnailView.getContext()).getImageLoader());
         holder.thumbnailView.setAspectRatio(cursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+        Glide.clear(holder.thumbnailView);
+        Glide.with(holder.thumbnailView.getContext()).load(cursor.getString(ArticleLoader.Query.THUMB_URL))
+                .into(holder.thumbnailView);
     }
 
     @Override
