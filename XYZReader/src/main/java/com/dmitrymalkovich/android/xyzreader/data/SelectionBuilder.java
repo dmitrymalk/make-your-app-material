@@ -19,7 +19,6 @@
  * -Imported from AOSP frameworks/base/core/java/com/android/internal/content
  * -Changed package name
  */
-
 package com.dmitrymalkovich.android.xyzreader.data;
 
 import java.util.ArrayList;
