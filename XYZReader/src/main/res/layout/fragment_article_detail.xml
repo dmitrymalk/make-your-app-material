@@ -88,6 +88,8 @@
             style="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/black"
             android:padding="@dimen/material_layout_keylines_screen_edge_margin" />
 
     </android.support.v4.widget.NestedScrollView>

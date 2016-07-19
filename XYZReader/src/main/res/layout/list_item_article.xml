@@ -13,37 +13,41 @@
         <com.dmitrymalkovich.android.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
+            android:background="@color/material_grey_300"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textStyle="bold"
+            android:textColor="@color/material_light_white"
             android:paddingLeft="@dimen/material_component_cards_left_and_right_padding"
             android:paddingRight="@dimen/material_component_cards_left_and_right_padding"
             android:paddingTop="@dimen/material_component_cards_top_and_bottom_padding" />
 
         <TextView
             android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/material_light_white"
             android:paddingLeft="@dimen/material_component_cards_left_and_right_padding"
-            android:paddingRight="@dimen/material_component_cards_left_and_right_padding" />
+            android:paddingRight="@dimen/material_component_cards_left_and_right_padding"
+            android:paddingTop="@dimen/material_component_cards_primary_title_bottom_padding"/>
 
         <TextView
             android:id="@+id/article_author"
-            style="@style/TextAppearance.AppCompat.Body1"
+            style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/material_light_white"
             android:paddingBottom="@dimen/material_component_cards_top_and_bottom_padding"
             android:paddingLeft="@dimen/material_component_cards_left_and_right_padding"
             android:paddingRight="@dimen/material_component_cards_left_and_right_padding" />
