@@ -126,9 +126,8 @@ public class ArticleDetailFragment extends Fragment implements
                         cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
                         System.currentTimeMillis(), DateUtils.HOUR_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_ALL).toString()
-                        + " by <font color='#ffffff'>"
-                        + cursor.getString(ArticleLoader.Query.AUTHOR)
-                        + "</font>").toString();
+                        + " by "
+                        + cursor.getString(ArticleLoader.Query.AUTHOR)).toString();
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
@@ -159,7 +158,7 @@ public class ArticleDetailFragment extends Fragment implements
                                                    Target<GlideDrawable> target,
                                                    boolean isFromMemoryCache, boolean isFirstResource) {
                         Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
-                        changeMetaBarColor(bitmap);
+                        changeUIColors(bitmap);
                         return false;
                     }
                 })
@@ -176,18 +175,6 @@ public class ArticleDetailFragment extends Fragment implements
         });
     }
 
-    private void changeMetaBarColor(Bitmap bitmap) {
-        Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
-            public void onGenerated(Palette palette) {
-                int defaultColor = 0xFF333333;
-                int darkMutedColor = palette.getMutedColor(defaultColor);
-                metaBar.setBackgroundColor(darkMutedColor);
-                mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
-                mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
-            }
-        });
-    }
-
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
     }
@@ -196,5 +183,17 @@ public class ArticleDetailFragment extends Fragment implements
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    private void changeUIColors(Bitmap bitmap) {
+        Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
+            public void onGenerated(Palette palette) {
+                int defaultColor = 0xFF333333;
+                int darkMutedColor = palette.getDarkMutedColor(defaultColor);
+                metaBar.setBackgroundColor(darkMutedColor);
+                mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
+                mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+            }
+        });
     }
 }

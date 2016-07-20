@@ -18,7 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearance"
             app:expandedTitleMargin="@dimen/material_layout_keylines_screen_edge_margin"
             app:expandedTitleMarginBottom="@dimen/expanded_title_margin_bottom"
@@ -60,6 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="invisible"
+                        android:maxLines="1"
                         android:textColor="@color/material_light_white"
                         android:textStyle="bold" />
 
