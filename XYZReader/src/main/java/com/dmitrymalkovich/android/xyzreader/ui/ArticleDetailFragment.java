@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -45,6 +47,13 @@ public class ArticleDetailFragment extends Fragment implements
     private long mItemId;
     @BindView(R.id.photo)
     ImageView mPhotoView;
+
+    @BindView(R.id.meta_bar)
+    LinearLayout metaBar;
+    @BindView(R.id.article_title)
+    TextView mTitleView;
+    @BindView(R.id.article_author)
+    TextView mAuthorView;
     @BindView(R.id.article_body)
     TextView mBodyView;
     @BindView(R.id.share_fab)
@@ -53,6 +62,8 @@ public class ArticleDetailFragment extends Fragment implements
     Toolbar mToolbar;
     @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @BindView(R.id.app_bar)
+    AppBarLayout mAppBarLayout;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -109,7 +120,7 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        String title = cursor.getString(ArticleLoader.Query.TITLE);
+        final String title = cursor.getString(ArticleLoader.Query.TITLE);
         String author = Html.fromHtml(
                 DateUtils.getRelativeTimeSpanString(
                         cursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
@@ -122,7 +133,6 @@ public class ArticleDetailFragment extends Fragment implements
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
         mToolbar.setTitle(title);
-        mToolbar.setSubtitle(author);
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,9 +141,11 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
+        mTitleView.setText(title);
+        mAuthorView.setText(author);
         mBodyView.setText(body);
 
-       Glide.with(this)
+        Glide.with(this)
                 .load(photo)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .listener(new RequestListener<String, GlideDrawable>() {
@@ -147,7 +159,7 @@ public class ArticleDetailFragment extends Fragment implements
                                                    Target<GlideDrawable> target,
                                                    boolean isFromMemoryCache, boolean isFirstResource) {
                         Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
-                        changeUIColors(bitmap);
+                        changeMetaBarColor(bitmap);
                         return false;
                     }
                 })
@@ -164,11 +176,12 @@ public class ArticleDetailFragment extends Fragment implements
         });
     }
 
-    private void changeUIColors(Bitmap bitmap) {
+    private void changeMetaBarColor(Bitmap bitmap) {
         Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 int defaultColor = 0xFF333333;
                 int darkMutedColor = palette.getMutedColor(defaultColor);
+                metaBar.setBackgroundColor(darkMutedColor);
                 mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
                 mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
             }

@@ -19,6 +19,9 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearance"
+            app:expandedTitleMargin="@dimen/material_layout_keylines_screen_edge_margin"
+            app:expandedTitleMarginBottom="@dimen/expanded_title_margin_bottom"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -39,30 +42,37 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/photo_background_protection" />
 
+                <LinearLayout
+                    android:id="@+id/meta_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/expanded_toolbar_height"
+                    android:layout_gravity="bottom"
+                    android:elevation="@dimen/app_bar_elevation"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/material_layout_keylines_screen_edge_margin"
+                    android:paddingRight="@dimen/material_layout_keylines_screen_edge_margin"
+                    android:paddingBottom="@dimen/material_layout_keylines_screen_edge_margin"
+                    android:paddingLeft="@dimen/material_layout_keylines_screen_edge_margin">
+
+                    <TextView
+                        android:id="@+id/article_title"
+                        style="?android:attr/textAppearanceLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:textColor="@color/material_light_white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/article_author"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/material_light_white"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
             </FrameLayout>
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/meta_bar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/title"-->
-                <!--android:layout_gravity="bottom"-->
-                <!--android:orientation="vertical"-->
-                <!--android:padding="@dimen/material_layout_keylines_screen_edge_margin">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/article_title"-->
-                    <!--style="?android:attr/textAppearanceLarge"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/article_author"-->
-                    <!--style="?android:attr/textAppearanceSmall"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
-
-            <!--</LinearLayout>-->
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
@@ -83,14 +93,22 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/article_body"
-            style="?android:attr/textAppearanceMedium"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="@android:color/black"
-            android:padding="@dimen/material_layout_keylines_screen_edge_margin" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/article_body"
+                style="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/material_layout_keylines_screen_edge_margin" />
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
@@ -100,6 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/material_component_floating_action_button_margin"
         android:clickable="true"
+        app:elevation="@dimen/floating_action_button_elevation"
         android:contentDescription="@string/action_share"
         android:src="@drawable/ic_share_black_24dp"
         app:layout_anchor="@id/app_bar"

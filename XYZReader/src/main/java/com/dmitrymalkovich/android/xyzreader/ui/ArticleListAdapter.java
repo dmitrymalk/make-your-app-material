@@ -1,7 +1,6 @@
 package com.dmitrymalkovich.android.xyzreader.ui;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.support.v7.graphics.Palette;
