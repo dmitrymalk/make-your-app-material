@@ -36,8 +36,10 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:background="@color/material_grey_300"
-                android:paddingLeft="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
-                android:paddingRight="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+                android:paddingTop="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+                android:paddingBottom="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+                android:paddingLeft="@dimen/material_component_cards_left_and_right_padding"
+                android:paddingRight="@dimen/material_component_cards_left_and_right_padding"
                 android:scrollbarStyle="outsideOverlay"
                 tools:ignore="PrivateResource" />
         </android.support.v4.widget.SwipeRefreshLayout>
