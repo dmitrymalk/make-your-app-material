@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
@@ -54,6 +55,8 @@ public class ArticleListAdapter extends CursorRecyclerViewAdapter<ArticleListAda
         Glide.clear(holder.thumbnailView);
         Glide.with(holder.thumbnailView.getContext())
                 .load(cursor.getString(ArticleLoader.Query.THUMB_URL))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontAnimate()
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {

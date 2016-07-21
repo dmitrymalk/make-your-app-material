@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     tools:ignore="MergeRootFrame">
 
@@ -18,23 +17,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:expandedTitleMargin="@dimen/activity_horizontal_margin"
+            app:expandedTitleMarginBottom="@dimen/expanded_toolbar_title_margin_bottom"
             app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearance"
-            app:expandedTitleMargin="@dimen/material_layout_keylines_screen_edge_margin"
-            app:expandedTitleMarginBottom="@dimen/expanded_title_margin_bottom"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll"
             app:toolbarId="@+id/toolbar">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:fitsSystemWindows="true"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
 
                 <ImageView
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
-                    android:fitsSystemWindows="true"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop" tools:ignore="ContentDescription" />
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription" />
 
                 <View
                     android:layout_width="match_parent"
@@ -48,27 +48,27 @@
                     android:layout_gravity="bottom"
                     android:elevation="@dimen/app_bar_elevation"
                     android:orientation="vertical"
-                    android:paddingTop="@dimen/material_layout_keylines_screen_edge_margin"
-                    android:paddingRight="@dimen/material_layout_keylines_screen_edge_margin"
                     android:paddingBottom="@dimen/material_layout_keylines_screen_edge_margin"
-                    android:paddingLeft="@dimen/material_layout_keylines_screen_edge_margin">
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/material_layout_keylines_screen_edge_margin">
 
                     <TextView
                         android:id="@+id/article_title"
                         style="?android:attr/textAppearanceLarge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="invisible"
                         android:maxLines="1"
                         android:textColor="@color/material_light_white"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:visibility="invisible" />
 
                     <TextView
                         android:id="@+id/article_author"
                         style="?android:attr/textAppearanceSmall"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/material_light_white"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/material_light_white" />
 
                 </LinearLayout>
 
@@ -78,6 +78,7 @@
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                app:contentInsetStart="@dimen/activity_horizontal_margin"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -94,19 +95,23 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/article_body"
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
+                android:layout_marginBottom="@dimen/material_layout_keylines_screen_edge_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/material_layout_keylines_screen_edge_margin"
                 android:autoLink="web"
-                android:textColor="@android:color/black"
-                android:padding="@dimen/material_layout_keylines_screen_edge_margin" />
+                android:linksClickable="true"
+                android:paddingTop="@dimen/material_layout_keylines_screen_edge_margin"
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
 
@@ -118,9 +123,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/material_component_floating_action_button_margin"
         android:clickable="true"
-        app:elevation="@dimen/floating_action_button_elevation"
         android:contentDescription="@string/action_share"
         android:src="@drawable/ic_share_black_24dp"
+        app:elevation="@dimen/floating_action_button_elevation"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end" />
 

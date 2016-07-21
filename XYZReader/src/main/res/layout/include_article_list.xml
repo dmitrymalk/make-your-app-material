@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+        android:paddingLeft="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+        android:paddingRight="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+        android:paddingTop="@dimen/material_component_cards_padding_from_edge_of_screen_to_card"
+        android:scrollbarStyle="outsideOverlay"
+        tools:ignore="PrivateResource" />
+</android.support.v4.widget.SwipeRefreshLayout>
