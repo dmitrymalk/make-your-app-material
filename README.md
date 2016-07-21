@@ -4,7 +4,7 @@
 
 Make Your App Material is the seventh project in Udacity's Android Developer Nanodegree. 
 
-<img width="40%" hspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039819/dd38d6c8-4fa4-11e6-9914-e25d8764a759.png" /> <img width="40%" hspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039818/dd386b98-4fa4-11e6-9e67-6a500ba7c209.png" /> <img width="80%" hspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039817/dd37f898-4fa4-11e6-8001-6105bda2cac9.png" />
+<img width="40%" hspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039819/dd38d6c8-4fa4-11e6-9914-e25d8764a759.png" /> <img width="40%" hspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039818/dd386b98-4fa4-11e6-9e67-6a500ba7c209.png" /> <img width="80%" vspace="20" src="https://cloud.githubusercontent.com/assets/2931932/17039817/dd37f898-4fa4-11e6-8001-6105bda2cac9.png" />
 
 ## License
 
