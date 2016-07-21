@@ -2,8 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:focusable="true"
-    android:foreground="?selectableItemBackground">
+    android:layout_margin="@dimen/material_component_cards_space_between_cards"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"

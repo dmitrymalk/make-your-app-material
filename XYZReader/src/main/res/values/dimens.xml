@@ -1,13 +1,13 @@
 <resources>
-    <!--Cards-->
+
+    <dimen name="max_width">400dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="material_component_cards_left_and_right_padding">16dp</dimen>
     <dimen name="material_component_cards_top_and_bottom_padding">16dp</dimen>
-    <dimen name="material_component_cards_padding_from_edge_of_screen_to_card">8dp</dimen>
-    <dimen name="material_component_cards_space_between_cards">8dp</dimen>
-    <!--Grid-->
-    <integer name="list_column_count">2</integer>
-    <!--App Bar-->
+    <dimen name="material_component_cards_padding_from_edge_of_screen_to_card">4dp</dimen>
+    <dimen name="material_component_cards_space_between_cards">4dp</dimen>
     <dimen name="app_bar_elevation">4dp</dimen>
-    <!--Floating Action Button-->
     <dimen name="floating_action_button_elevation">4dp</dimen>
+    <integer name="grid_column_count">2</integer>
+
 </resources>

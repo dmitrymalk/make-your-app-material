@@ -1,2 +1,8 @@
 <resources>
+
+    <dimen name="max_width">540dp</dimen>
+    <integer name="grid_column_count">3</integer>
+    <dimen name="material_component_cards_padding_from_edge_of_screen_to_card">8dp</dimen>
+    <dimen name="material_component_cards_space_between_cards">8dp</dimen>
+
 </resources>

@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="max_width">500dp</dimen>
+    <integer name="grid_column_count">2</integer>
+
+</resources>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
@@ -58,12 +60,18 @@ public class ArticleDetailFragment extends Fragment implements
     TextView mBodyView;
     @BindView(R.id.share_fab)
     FloatingActionButton mShareFab;
+    @Nullable
     @BindView(R.id.detail_toolbar)
     Toolbar mToolbar;
+    @Nullable
     @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @Nullable
     @BindView(R.id.app_bar)
     AppBarLayout mAppBarLayout;
+    @Nullable
+    @BindView(R.id.card)
+    CardView mCard;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -131,14 +139,18 @@ public class ArticleDetailFragment extends Fragment implements
         final String body = Html.fromHtml(cursor.getString(ArticleLoader.Query.BODY)).toString();
         String photo = cursor.getString(ArticleLoader.Query.PHOTO_URL);
 
-        mToolbar.setTitle(title);
-        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
+        if (mToolbar != null) {
+            if (mCard == null) {
+                mToolbar.setTitle(title);
             }
-        });
+            mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().finish();
+                }
+            });
+        }
 
         mTitleView.setText(title);
         mAuthorView.setText(author);
@@ -191,8 +203,10 @@ public class ArticleDetailFragment extends Fragment implements
                 int defaultColor = 0xFF333333;
                 int darkMutedColor = palette.getDarkMutedColor(defaultColor);
                 metaBar.setBackgroundColor(darkMutedColor);
-                mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
-                mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+                if (mCollapsingToolbarLayout != null) {
+                    mCollapsingToolbarLayout.setContentScrimColor(darkMutedColor);
+                    mCollapsingToolbarLayout.setStatusBarScrimColor(darkMutedColor);
+                }
             }
         });
     }

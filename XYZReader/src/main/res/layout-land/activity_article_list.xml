@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/include_article_list_toolbar"/>
+    <include layout="@layout/include_article_list_toolbar" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -11,7 +11,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/include_article_list" />
+        <include
+            layout="@layout/include_article_list"
+            android:layout_width="@dimen/max_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
 
     </FrameLayout>
 
