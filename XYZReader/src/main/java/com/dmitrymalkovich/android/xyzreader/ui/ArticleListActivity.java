@@ -50,29 +50,7 @@ public class ArticleListActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-//        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-//            @Override
-//            public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-//                                       RecyclerView.State state) {
-//                int position = parent.getChildAdapterPosition(view);
-//                int space = (int) getResources()
-//                        .getDimension(R.dimen.material_component_cards_space_between_cards);
-//
-//                if (position == 0 || position == 1)
-//                {
-//                    outRect.top = space;
-//                }
-//                else
-//                {
-//                    outRect.top = 0;
-//                }
-//
-//                if (position % 2 == 0) {
-//                    outRect.right = space;
-//                }
-//                outRect.bottom = space;
-//            }
-//        });
+
         int columnCount = getResources().getInteger(R.integer.grid_column_count);
         StaggeredGridLayoutManager staggeredGridLayoutManager =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
