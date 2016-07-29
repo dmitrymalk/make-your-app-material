@@ -198,7 +198,8 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     private void changeUIColors(Bitmap bitmap) {
-        Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
+        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+            @Override
             public void onGenerated(Palette palette) {
                 int defaultColor = 0xFF333333;
                 int darkMutedColor = palette.getDarkMutedColor(defaultColor);

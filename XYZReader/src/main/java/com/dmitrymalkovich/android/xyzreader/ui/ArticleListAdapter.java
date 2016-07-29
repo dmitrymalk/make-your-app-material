@@ -68,7 +68,7 @@ public class ArticleListAdapter extends CursorRecyclerViewAdapter<ArticleListAda
                                                    Target<GlideDrawable> target,
                                                    boolean isFromMemoryCache, boolean isFirstResource) {
                         Bitmap bitmap = ((GlideBitmapDrawable) resource.getCurrent()).getBitmap();
-                        Palette palette = Palette.generate(bitmap);
+                        Palette palette = Palette.from(bitmap).generate();
                         int defaultColor = 0xFF333333;
                         int color = palette.getDarkMutedColor(defaultColor);
                         holder.itemView.setBackgroundColor(color);
